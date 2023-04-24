@@ -1,0 +1,99 @@
+<%- include('header') %>
+
+<!-- <div > 
+    <table>
+        <thead>
+            <tr>
+                <th>No mission</th>
+                <th>Nom du salarié</th>
+                <th>Prénom du salarié</th>
+                <th>Début de la mission</th>
+                <th>Fin de la mission</th>
+                <th>Lieu de la mission</th>
+                <th>Montant</th>
+                <th>Paiement</th>
+            </tr>
+        </thead>
+        <tbody> <% dataMission.forEach(function(res){ %>
+            <tr>
+                <td><%= res.mission_Id %></td>
+                <td><%= res.employe_Nom %></td>
+                <td><%= res.employe_Prenom %></td>
+                <td><%= res.mission_DateDebut.toLocaleDateString() %></td>
+                <td><%= res.mission_DateFin.toLocaleDateString() %></td>
+                <td><%= res.CA %> (<%= res.comCP %>)</td> 
+
+                <td>  <% if (res.distance_NombreKm) { %>
+                    
+                    <%= ((res.distance_NombreKm) * (res.parametre_ForfaitKm) + (res.nbJours) * (res.parametre_MontantJournalier)) %> €
+
+                <% } else { %>
+                    
+                    Distance entre <%= res.CD %> et <%= res.CA %> non définie
+
+                <% } %>
+                </td>
+
+                <td><% if (res.mission_Payee) { %>
+                    Payée
+                <% } else { %>
+                    <button><a href="http://localhost:3000/paieMission/modifPaie/<%=res.mission_Id%>">Payer</a></button>
+                <% } %>
+                </td>
+                <% }) %> 
+            </tr>  
+        </tbody>
+    </table>
+</div> -->
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<div class="container mt-4">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">No mission</th>
+                <th scope="col">Nom du salarié</th>
+                <th scope="col">Prénom du salarié</th>
+                <th scope="col">Début de la mission</th>
+                <th scope="col">Fin de la mission</th>
+                <th scope="col">Lieu de la mission</th>
+                <th scope="col">Montant</th>
+                <th scope="col">Paiement</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% dataMission.forEach(function(res){ %>
+            <tr>
+                <td><%= res.mission_Id %></td>
+                <td><%= res.employe_Nom %></td>
+                <td><%= res.employe_Prenom %></td>
+                <td><%= res.mission_DateDebut.toLocaleDateString() %></td>
+                <td><%= res.mission_DateFin.toLocaleDateString() %></td>
+                <td><%= res.CA %> (<%= res.comCP %>)</td> 
+
+                <td>
+                    <% if (res.distance_NombreKm) { %>
+                        <%= ((res.distance_NombreKm) * (res.parametre_ForfaitKm) + (res.nbJours) * (res.parametre_MontantJournalier)) %> €
+                    <% } else { %>
+                        Distance entre <%= res.CD %> et <%= res.CA %> non définie
+                    <% } %>
+                </td>
+
+                <td>
+                    <% if (res.mission_Payee) { %>
+                        Payée
+                    <% } else { %>
+                        <button class="btn btn-primary"><a href="http://localhost:3000/paieMission/modifPaie/<%=res.mission_Id%>" class="text-white">Payer</a></button>
+                    <% } %>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+
+<%- include('footer') %>

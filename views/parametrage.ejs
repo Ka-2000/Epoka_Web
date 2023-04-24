@@ -1,0 +1,193 @@
+<%- include('header') %>
+
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" /> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<h1>Paramétrage de l'application</h1>
+
+<h2>Montant du remboursement au km</h2>
+
+<% dataRemboursement.forEach(function(res){ %>
+<form action="/parametrage/modifRembKM" method="post" enctype="application/x-www-form-urlencoded">
+    <label for="newMtKM"></label>
+    Remboursement au km : <input type="text" name="newMtKM" value="<%= res.parametre_ForfaitKm %>"> 
+    <button type="submit">Valider</button>
+</form>
+
+<form action="/parametrage/modifRembJournee" method="post" enctype="application/x-www-form-urlencoded">
+    <label for="newMtJournee"></label>
+    Indemnité d'hébergement : <input type="text" name="newMtJournee" value="<%= res.parametre_MontantJournalier %>">
+    <button type="submit">Valider</button>
+</form>
+
+<% }) %>
+
+
+<h1>Ajouter une distance entre les villes</h1>
+
+<form action="/parametrage/ajoutDistance" method="post" enctype="application/x-www-form-urlencoded">
+    De : <select required class="select2" name="villeDepart" id="villeDepart"><% dataCommune.forEach(function(res){ %><option name="VilleDepartId" value="<%= res.comId %>"><%= res.comNom %> (<%= res.comCP %>)</option><% }) %></select> à : <select required class="select2" name="villeArrivee" id="villeArrivee"><% dataCommune.forEach(function(res){ %><option name="VilleArriveeId" value="<%= res.comId %>"><%= res.comNom %> (<%= res.comCP %>)</option><% }) %></select> Distance au km : <input type="text" name="distanceAuKm">
+    <button type="submit">Ajouter</button>
+</form>
+
+
+<h1>Distance entre les villes déjà saisies</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>De</th>
+            <th>À</th>
+            <th>Km</th>
+        </tr>
+    </thead>
+    <tbody> <% dataDistance.forEach(function(res){ %>
+        <tr>
+            <td><%= dataCommune[res.distance_IdVilleDepart-1].comNom %></td>
+            <td><%= dataCommune[res.distance_IdVilleArrive-1].comNom %></td>
+            <td><%= res.distance_NombreKm %></td>
+        </tr> <% }) %>
+    </tbody>
+</table> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Paramétrage de l'application</title>
+    <link href="/css/select2.min.css" rel="stylesheet">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Paramétrage de l'application</h1>
+
+    <h2>Montant du remboursement au km</h2>
+
+    <% dataRemboursement.forEach(function(res){ %>
+    <form action="/parametrage/modifRembKM" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="newMtKM"></label>
+        Remboursement au km : <input type="text" name="newMtKM" value="<%= res.parametre_ForfaitKm %>"> 
+        <button type="submit">Valider</button>
+    </form>
+
+    <form action="/parametrage/modifRembJournee" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="newMtJournee"></label>
+        Indemnité d'hébergement : <input type="text" name="newMtJournee" value="<%= res.parametre_MontantJournalier %>">
+        <button type="submit">Valider</button>
+    </form>
+
+    <% }) %>
+
+    <h1>Ajouter une distance entre les villes</h1>
+
+    <form action="/parametrage/ajoutDistance" method="post" enctype="application/x-www-form-urlencoded">
+        De : <select required class="select2" name="villeDepart" id="villeDepart"><% dataCommune.forEach(function(res){ %><option name="VilleDepartId" value="<%= res.comId %>"><%= res.comNom %> (<%= res.comCP %>)</option><% }) %></select> à : <select required class="select2" name="villeArrivee" id="villeArrivee"><% dataCommune.forEach(function(res){ %><option name="VilleArriveeId" value="<%= res.comId %>"><%= res.comNom %> (<%= res.comCP %>)</option><% }) %></select> Distance au km : <input type="text" name="distanceAuKm">
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <h1>Distance entre les villes déjà saisies</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>De</th>
+                <th>À</th>
+                <th>Km</th>
+            </tr>
+        </thead>
+        <tbody> <% dataDistance.forEach(function(res){ %>
+            <tr>
+                <td><%= dataCommune[res.distance_IdVilleDepart-1].comNom %></td>
+                <td><%= dataCommune[res.distance_IdVilleArrive-1].comNom %></td>
+                <td><%= res.distance_NombreKm %></td>
+            </tr> <% }) %>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<div class="container">
+  <h1>Paramétrage de l'application</h1>
+
+  <h2>Montant du remboursement au km</h2>
+
+  <% dataRemboursement.forEach(function(res){ %>
+  <form action="/parametrage/modifRembKM" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="form-group">
+      <label for="newMtKM">Remboursement au km :</label>
+      <input type="text" class="form-control" name="newMtKM" value="<%= res.parametre_ForfaitKm %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Valider</button>
+  </form>
+
+  <form action="/parametrage/modifRembJournee" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="form-group">
+      <label for="newMtJournee">Indemnité d'hébergement :</label>
+      <input type="text" class="form-control" name="newMtJournee" value="<%= res.parametre_MontantJournalier %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Valider</button>
+  </form>
+
+  <% }) %>
+
+  <hr>
+
+  <h1>Ajouter une distance entre les villes</h1>
+
+  <form action="/parametrage/ajoutDistance" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="form-group">
+      <label for="villeDepart">De :</label>
+      <select required class="form-control select2" name="villeDepart" id="villeDepart">
+        <% dataCommune.forEach(function(res){ %>
+        <option name="VilleDepartId" value="<%= res.comId %>"><%= res.comNom %> (<%= res.comCP %>)</option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="villeArrivee">à :</label>
+      <select required class="form-control select2" name="villeArrivee" id="villeArrivee">
+        <% dataCommune.forEach(function(res){ %>
+        <option name="VilleArriveeId" value="<%= res.comId %>"><%= res.comNom %> (<%= res.comCP %>)</option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="distanceAuKm">Distance au km :</label>
+      <input type="text" class="form-control" name="distanceAuKm">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+
+  <hr>
+
+  <h1>Distance entre les villes déjà saisies</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>De</th>
+        <th>À</th>
+        <th>Km</th>
+      </tr>
+    </thead>
+    <tbody> <% dataDistance.forEach(function(res){ %>
+        <tr>
+            <td><%= dataCommune[res.distance_IdVilleDepart-1].comNom %></td>
+            <td><%= dataCommune[res.distance_IdVilleArrive-1].comNom %></td>
+            <td><%= res.distance_NombreKm %></td>
+        </tr> <% }) %>
+    </tbody>
+</table>
+</body>
+
+<%- include('footer') %>

@@ -1,0 +1,93 @@
+<%- include('header') %>
+
+<!-- <div > 
+    <table>
+        <thead>
+            <tr>
+                <th>No mission</th>
+                <th>Nom du salarié</th>
+                <th>Prénom du salarié</th>
+                <th>Début de la mission</th>
+                <th>Fin de la mission</th>
+                <th>Lieu de la mission</th>
+                <th>Validation</th>
+                <th>Paiement</th>
+            </tr>
+        </thead>
+        <tbody> <% dataMission.forEach(function(res){ %>
+            <tr>
+                <td><%= res.mission_Id %></td>
+                <td><%= res.employe_Nom %></td>
+                <td><%= res.employe_Prenom %></td>
+                <td><%= res.mission_DateDebut.toLocaleDateString() %></td>
+                <td><%= res.mission_DateFin.toLocaleDateString() %></td>
+                <td><%= res.comNom %> (<%= res.comCP %>)</td>
+                <td><% if (res.mission_Validation) { %>
+                        Validée
+                    <% } else { %>
+                        <button><a href="http://localhost:3000/validMission/modifValid/<%=res.mission_Id%>">Valider</a></button>
+                    <% } %>
+                </td>
+
+                <td> <% if (res.mission_Payee) { %>
+                    Payée
+                <% } else { %>
+                    
+                <% } %>
+            </td>
+            <% }) %> 
+            </tr>  
+        </tbody>
+    </table>
+</div> -->
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+  
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>No mission</th>
+          <th>Nom du salarié</th>
+          <th>Prénom du salarié</th>
+          <th>Début de la mission</th>
+          <th>Fin de la mission</th>
+          <th>Lieu de la mission</th>
+          <th>Validation</th>
+          <th>Paiement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% dataMission.forEach(function(res){ %>
+        <tr>
+          <td><%= res.mission_Id %></td>
+          <td><%= res.employe_Nom %></td>
+          <td><%= res.employe_Prenom %></td>
+          <td><%= res.mission_DateDebut.toLocaleDateString() %></td>
+          <td><%= res.mission_DateFin.toLocaleDateString() %></td>
+          <td><%= res.comNom %> (<%= res.comCP %>)</td>
+          <td>
+            <% if (res.mission_Validation) { %>
+            Validée
+            <% } else { %>
+            <button class="btn btn-primary"><a href="http://localhost:3000/validMission/modifValid/<%=res.mission_Id%>">Valider</a></button>
+            <% } %>
+          </td>
+  
+          <td>
+            <% if (res.mission_Payee) { %>
+            Payée
+            <% } else { %>
+            <button class="btn btn-success">Payer</button>
+            <% } %>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
+  
+
+<%- include('footer') %>
