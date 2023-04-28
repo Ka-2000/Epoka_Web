@@ -1,13 +1,17 @@
-/* POSITION FOOTER */
-#footer {
-    padding: 0 0 0px 0;
-    font-size: 14px;
-    margin-top: 30px; 
+html, body {
+    height: 100%;
 }
-html, body { height: 100%;}
   
-body > footer {
-    position: sticky;
-    top: 100vh;
+.wrapper {
+    min-height: 100%;
+    /* La propriété min-height permet de faire en sorte que le wrapper prenne au moins 100% de la hauteur de la fenêtre. */
+    position: relative;
+}
+  
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* La propriété position:absolute permet de positionner le footer en bas de la page, la propriété bottom:0 le place en bas de la page, et la propriété width:100% fait en sorte que le footer prenne toute la largeur de la fenêtre. */
 }
   
