@@ -86,7 +86,7 @@
                     <% if (res.mission_Payee) { %>
                         Payée
                     <% } else { %>
-                        <button class="btn btn-primary"><a href="http://localhost:3000/paieMission/modifPaie/<%=res.mission_Id%>" class="text-white">Payer</a></button>
+                        <a href="http://localhost:3000/paieMission/modifPaie/<%=res.mission_Id%>" class="text-white"><button class="btn btn-primary">Payer</button></a>
                     <% } %>
                 </td>
             </tr>
